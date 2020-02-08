@@ -68,6 +68,11 @@ class App extends Component {
   
   onButtonSubmit = () => { 
     this.setState({imageUrl: this.state.input})
+    const fetchParams = {
+        headers: {"content-type":"application/json"}, 
+        //body: JSON.stringify(this.state), 
+        method: "PUT"
+    }
 
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
@@ -77,6 +82,11 @@ class App extends Component {
         console.log("there was an error:", err)
         // there was an error
       })
+    fetch('http://192.168.0.50:3001/image', fetchParams)
+    .then((res) => {
+      res.json().then(json => this.setState(json))
+    })
+    .catch((error) => {console.error('error:', error)})
 
   };
 

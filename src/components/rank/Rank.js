@@ -6,7 +6,7 @@ function Rank({ userName, entries }) {
       <div>
         {userName}, you have {entries} entries..
       </div>
-      <div className="white f1">#5</div>
+      {/*<div className="white f1">#5</div>*/}
     </div>
   );
 }
