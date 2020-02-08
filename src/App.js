@@ -23,19 +23,26 @@ class App extends Component {
       imageUrl: '',
       boundingBoxes: [],
       route: 'SIGNED_OUT', 
-      isSignedIn: false
+      isSignedIn: false,
+      name: '',
+      entries: null,
     }
   };
 
   setRoute = ( route ) => {
     
     if (route === 'SIGN_OUT' ) {
-      this.setState({isSignedIn: false})
+      this.setState({isSignedIn: false, name: '', entries: null})
     } else if ( route === 'HOME') {
       this.setState({isSignedIn: true})
     }
     this.setState({route: route})
     console.log('set_route:', route)
+  }
+
+  setUser = ( user ) => {
+    this.setState({name: user.name, entries: user.entries})
+    console.log(user)
   }
 
   onInputChange = (event) => {
@@ -86,10 +93,10 @@ class App extends Component {
               <FaceRecognition image={this.state.imageUrl} boundingBoxes={this.state.boundingBoxes}/>
             </>
           : this.state.route === 'SIGN_IN' ? <>
-            <SignIn setRoute={this.setRoute}/> </>
+            <SignIn setRoute={this.setRoute} setUser={this.setUser}/> </>
           : this.state.route === 'REGISTER' ? 
             <>
-            <Register setRoute={this.setRoute} />
+            <Register setRoute={this.setRoute} setUser={this.setUser} />
             </>
           : null
 
