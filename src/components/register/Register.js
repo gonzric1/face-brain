@@ -30,7 +30,7 @@ class Register extends Component {
     console.log('password: ', password)
   };
 
-  onSubmitClick = event => {
+  onButtonSubmit = event => {
     const params = {
         headers: {"content-type":"application/json"}, 
         body: JSON.stringify(this.state), 
@@ -94,7 +94,7 @@ class Register extends Component {
             <div className="mt3">
               <button
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6"
-                onClick={e => this.onSubmitClick()}
+                onClick={e => this.onButtonSubmit()}
               >
                 Register
               </button>

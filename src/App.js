@@ -42,7 +42,7 @@ class App extends Component {
 
   setUser = ( user ) => {
     this.setState({name: user.name, entries: user.entries})
-    console.log(user)
+    console.log("user is:", user)
   }
 
   onInputChange = (event) => {
@@ -88,7 +88,7 @@ class App extends Component {
         {
           this.state.route ==='HOME' ? 
             <>
-              <Rank />
+              <Rank userName={this.state.name} entries={this.state.entries} />
               <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit ={this.onButtonSubmit} />
               <FaceRecognition image={this.state.imageUrl} boundingBoxes={this.state.boundingBoxes}/>
             </>

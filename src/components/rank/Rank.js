@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Rank() {
+function Rank( {userName, entries}) {
     return (
         <div className='white f3'>
-            <div>Andrei, your current rank is...</div>
+            <div>{userName}, you have {entries} entries..</div>
             <div className='white f1'>#5</div>
             
         </div>
